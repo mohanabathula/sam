@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sam
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sam
+  template:
+    metadata:
+      labels:
+        app: sam
+    spec:
+      containers:
+      - name: sam-server
+        image: mohanabathula/sam:latest
+        ports:
+        - containerPort: 8080
+        # for GPU access
+        # resources:
+        #   limits:
+        #     nvidia.com/gpu: 1        
